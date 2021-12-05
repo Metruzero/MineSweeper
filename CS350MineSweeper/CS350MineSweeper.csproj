@@ -53,8 +53,20 @@
     <Compile Include="CustomDifficultyForm.Designer.cs">
       <DependentUpon>CustomDifficultyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HighScoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HighScoreForm.Designer.cs">
+      <DependentUpon>HighScoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameStateController.cs" />
     <Compile Include="GridController.cs" />
+    <Compile Include="HighScoreInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HighScoreInput.Designer.cs">
+      <DependentUpon>HighScoreInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageWorker.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -70,6 +82,12 @@
     <Compile Include="TimeController.cs" />
     <EmbeddedResource Include="CustomDifficultyForm.resx">
       <DependentUpon>CustomDifficultyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighScoreForm.resx">
+      <DependentUpon>HighScoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighScoreInput.resx">
+      <DependentUpon>HighScoreInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

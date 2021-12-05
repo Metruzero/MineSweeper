@@ -26,9 +26,10 @@ namespace CS350MineSweeper
             if(CheckValidity())
             {
                 mainForm.SetDifficultyAndReset(width, height, mineCount);
+                this.Close();
             }
             
-            this.Close();
+            
         }
 
         private bool CheckValidity()

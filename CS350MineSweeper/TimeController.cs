@@ -49,6 +49,11 @@ namespace CS350MineSweeper
             mainForm.UpdateTimer(0);
         }
 
+        public int getTime()
+        {
+            return stopwatch.Elapsed.Seconds;
+        }
+
         private void timerTick(object sender, EventArgs e)
         {
             mainForm.UpdateTimer(stopwatch.Elapsed.Seconds);

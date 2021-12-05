@@ -9,3 +9,5 @@ C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350Mine
 C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.exe
 C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.pdb
 C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.CustomDifficultyForm.resources
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.HighScoreForm.resources
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.HighScoreInput.resources

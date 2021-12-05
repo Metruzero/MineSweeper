@@ -36,20 +36,22 @@
             this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TestLabel = new System.Windows.Forms.Label();
             this.timePanel = new System.Windows.Forms.Panel();
             this.timeLabel = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
-            this.timerPictureBox = new System.Windows.Forms.PictureBox();
             this.mineCountPanel = new System.Windows.Forms.Panel();
-            this.flagPictureBox = new System.Windows.Forms.PictureBox();
             this.mineCountLabel = new System.Windows.Forms.Label();
-            this.scoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flagPictureBox = new System.Windows.Forms.PictureBox();
+            this.timerPictureBox = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.timePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).BeginInit();
             this.mineCountPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flagPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -86,7 +88,7 @@
             this.hardToolStripMenuItem,
             this.customToolStripMenuItem});
             this.difficultyToolStripMenuItem.Name = "difficultyToolStripMenuItem";
-            this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.difficultyToolStripMenuItem.Text = "Difficulty";
             // 
             // easyToolStripMenuItem
@@ -117,6 +119,14 @@
             this.customToolStripMenuItem.Text = "Custom...";
             this.customToolStripMenuItem.Click += new System.EventHandler(this.customToolStripMenuItem_Click);
             // 
+            // scoreToolStripMenuItem
+            // 
+            this.scoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.highScoresToolStripMenuItem});
+            this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
+            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.scoreToolStripMenuItem.Text = "Score";
+            // 
             // TestLabel
             // 
             this.TestLabel.AutoSize = true;
@@ -126,7 +136,6 @@
             this.TestLabel.TabIndex = 1;
             this.TestLabel.Text = "label1";
             this.TestLabel.UseCompatibleTextRendering = true;
-            this.TestLabel.Visible = false;
             // 
             // timePanel
             // 
@@ -158,14 +167,6 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // timerPictureBox
-            // 
-            this.timerPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.timerPictureBox.Name = "timerPictureBox";
-            this.timerPictureBox.Size = new System.Drawing.Size(25, 25);
-            this.timerPictureBox.TabIndex = 0;
-            this.timerPictureBox.TabStop = false;
-            // 
             // mineCountPanel
             // 
             this.mineCountPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -175,14 +176,6 @@
             this.mineCountPanel.Name = "mineCountPanel";
             this.mineCountPanel.Size = new System.Drawing.Size(85, 35);
             this.mineCountPanel.TabIndex = 4;
-            // 
-            // flagPictureBox
-            // 
-            this.flagPictureBox.Location = new System.Drawing.Point(55, 3);
-            this.flagPictureBox.Name = "flagPictureBox";
-            this.flagPictureBox.Size = new System.Drawing.Size(25, 25);
-            this.flagPictureBox.TabIndex = 2;
-            this.flagPictureBox.TabStop = false;
             // 
             // mineCountLabel
             // 
@@ -195,17 +188,45 @@
             this.mineCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.mineCountLabel.UseCompatibleTextRendering = true;
             // 
-            // scoreToolStripMenuItem
+            // highScoresToolStripMenuItem
             // 
-            this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
-            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.scoreToolStripMenuItem.Text = "Score";
+            this.highScoresToolStripMenuItem.Name = "highScoresToolStripMenuItem";
+            this.highScoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.highScoresToolStripMenuItem.Text = "High Scores";
+            this.highScoresToolStripMenuItem.Click += new System.EventHandler(this.highScoresToolStripMenuItem_Click);
+            // 
+            // flagPictureBox
+            // 
+            this.flagPictureBox.Location = new System.Drawing.Point(55, 3);
+            this.flagPictureBox.Name = "flagPictureBox";
+            this.flagPictureBox.Size = new System.Drawing.Size(25, 25);
+            this.flagPictureBox.TabIndex = 2;
+            this.flagPictureBox.TabStop = false;
+            // 
+            // timerPictureBox
+            // 
+            this.timerPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.timerPictureBox.Name = "timerPictureBox";
+            this.timerPictureBox.Size = new System.Drawing.Size(25, 25);
+            this.timerPictureBox.TabIndex = 0;
+            this.timerPictureBox.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(374, 71);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.mineCountPanel);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.timePanel);
@@ -220,9 +241,9 @@
             this.menuStrip1.PerformLayout();
             this.timePanel.ResumeLayout(false);
             this.timePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).EndInit();
             this.mineCountPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flagPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +268,8 @@
         private System.Windows.Forms.Label mineCountLabel;
         private System.Windows.Forms.PictureBox flagPictureBox;
         private System.Windows.Forms.ToolStripMenuItem scoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highScoresToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
 

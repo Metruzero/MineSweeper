@@ -16,8 +16,8 @@ namespace CS350MineSweeper
     {
 
         public Button[,] buttons;
-        private const int ButtonWidth = 40;
-        private const int ButtonHeight = 40;
+        private const int ButtonWidth = 30;
+        private const int ButtonHeight = 30;
         private const int TopPanelPadding = 30;
         private const int SidePaddingForGrid = 50;
         private const int TopPaddingForGrid = 100;
@@ -196,9 +196,20 @@ namespace CS350MineSweeper
             //TestLabel.Text = "You lose!";
         }
 
-        public void GameWon()
+        public void GameWon(Difficulty diff, int time, bool isHighScore)
         {
-            //TestLabel.Text = "You win!";
+            //Get high score
+            if(isHighScore)
+                GetHighScore(diff, time);
+        }
+
+        private void GetHighScore(Difficulty diff, int time)
+        {
+            //Create form
+            Form form = new HighScoreInput(diff, time);
+
+            //Display form
+            form.Show();
         }
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -285,6 +296,21 @@ namespace CS350MineSweeper
         public void UpdateMineCount(int mineCount)
         {
             mineCountLabel.Text = mineCount.ToString();
+        }
+
+        private void highScoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HighScoreForm();
+            form.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ScoreController sc = new ScoreController();
+            sc.AddScore("Alan", Difficulty.Hard, 20);
+
+            List<Score> test = sc.GetScoreList(Difficulty.Hard);
+            TestLabel.Text = test.Count.ToString();
         }
     }
 }

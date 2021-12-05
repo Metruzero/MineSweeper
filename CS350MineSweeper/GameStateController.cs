@@ -153,9 +153,17 @@ namespace CS350MineSweeper
         /// </summary>
         public void GameWon()
         {
+            //Change state
             gameState = GameState.GameWon;
+
+            //Stop timer
             timeController.stopTime();
-            mainForm.GameWon();
+            int score = timeController.getTime();
+
+            //Check score
+            ScoreController sc = new ScoreController();
+
+            mainForm.GameWon(diff, score, sc.isHighScore(diff, score));
         }
 
         public void increaseMineCount()
