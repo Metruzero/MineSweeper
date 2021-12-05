@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.difficultyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,25 +36,24 @@
             this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timePanel = new System.Windows.Forms.Panel();
             this.timeLabel = new System.Windows.Forms.Label();
+            this.timerPictureBox = new System.Windows.Forms.PictureBox();
             this.resetButton = new System.Windows.Forms.Button();
             this.mineCountPanel = new System.Windows.Forms.Panel();
             this.mineCountLabel = new System.Windows.Forms.Label();
-            this.highScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagPictureBox = new System.Windows.Forms.PictureBox();
-            this.timerPictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.timePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).BeginInit();
             this.mineCountPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flagPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
             this.scoresToolStripMenuItem,
             this.scoreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -63,12 +61,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(565, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
             // 
             // scoresToolStripMenuItem
             // 
@@ -125,6 +117,13 @@
             this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.scoreToolStripMenuItem.Text = "Score";
             // 
+            // highScoresToolStripMenuItem
+            // 
+            this.highScoresToolStripMenuItem.Name = "highScoresToolStripMenuItem";
+            this.highScoresToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.highScoresToolStripMenuItem.Text = "High Scores";
+            this.highScoresToolStripMenuItem.Click += new System.EventHandler(this.highScoresToolStripMenuItem_Click);
+            // 
             // timePanel
             // 
             this.timePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -145,6 +144,14 @@
             this.timeLabel.TabIndex = 1;
             this.timeLabel.Text = "0";
             this.timeLabel.UseCompatibleTextRendering = true;
+            // 
+            // timerPictureBox
+            // 
+            this.timerPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.timerPictureBox.Name = "timerPictureBox";
+            this.timerPictureBox.Size = new System.Drawing.Size(25, 25);
+            this.timerPictureBox.TabIndex = 0;
+            this.timerPictureBox.TabStop = false;
             // 
             // resetButton
             // 
@@ -176,13 +183,6 @@
             this.mineCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.mineCountLabel.UseCompatibleTextRendering = true;
             // 
-            // highScoresToolStripMenuItem
-            // 
-            this.highScoresToolStripMenuItem.Name = "highScoresToolStripMenuItem";
-            this.highScoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.highScoresToolStripMenuItem.Text = "High Scores";
-            this.highScoresToolStripMenuItem.Click += new System.EventHandler(this.highScoresToolStripMenuItem_Click);
-            // 
             // flagPictureBox
             // 
             this.flagPictureBox.Location = new System.Drawing.Point(55, 3);
@@ -190,14 +190,6 @@
             this.flagPictureBox.Size = new System.Drawing.Size(25, 25);
             this.flagPictureBox.TabIndex = 2;
             this.flagPictureBox.TabStop = false;
-            // 
-            // timerPictureBox
-            // 
-            this.timerPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.timerPictureBox.Name = "timerPictureBox";
-            this.timerPictureBox.Size = new System.Drawing.Size(25, 25);
-            this.timerPictureBox.TabIndex = 0;
-            this.timerPictureBox.TabStop = false;
             // 
             // MainForm
             // 
@@ -217,9 +209,9 @@
             this.menuStrip1.PerformLayout();
             this.timePanel.ResumeLayout(false);
             this.timePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).EndInit();
             this.mineCountPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.flagPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timerPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,7 +220,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem difficultyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem easyToolStripMenuItem;
