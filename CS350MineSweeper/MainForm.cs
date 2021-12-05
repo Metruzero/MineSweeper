@@ -198,7 +198,7 @@ namespace CS350MineSweeper
 
         public void GameWon(Difficulty diff, int time, bool isHighScore)
         {
-            //Get high score
+            //Check for high score
             if(isHighScore)
                 GetHighScore(diff, time);
         }
@@ -242,11 +242,6 @@ namespace CS350MineSweeper
         {
             gameStateController.SetDifficulty(width, height, mineCount, Difficulty.Custom);
             gameStateController.ResetBoard(this);
-        }
-
-        public void SetTest(String t)
-        {
-            TestLabel.Text = t;
         }
 
         private void InitCustomFont()
@@ -310,7 +305,6 @@ namespace CS350MineSweeper
             sc.AddScore("Alan", Difficulty.Hard, 20);
 
             List<Score> test = sc.GetScoreList(Difficulty.Hard);
-            TestLabel.Text = test.Count.ToString();
         }
     }
 }

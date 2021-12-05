@@ -37,7 +37,6 @@
             this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TestLabel = new System.Windows.Forms.Label();
             this.timePanel = new System.Windows.Forms.Panel();
             this.timeLabel = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@
             this.highScoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flagPictureBox = new System.Windows.Forms.PictureBox();
             this.timerPictureBox = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.timePanel.SuspendLayout();
             this.mineCountPanel.SuspendLayout();
@@ -127,16 +125,6 @@
             this.scoreToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.scoreToolStripMenuItem.Text = "Score";
             // 
-            // TestLabel
-            // 
-            this.TestLabel.AutoSize = true;
-            this.TestLabel.Location = new System.Drawing.Point(221, 78);
-            this.TestLabel.Name = "TestLabel";
-            this.TestLabel.Size = new System.Drawing.Size(35, 17);
-            this.TestLabel.TabIndex = 1;
-            this.TestLabel.Text = "label1";
-            this.TestLabel.UseCompatibleTextRendering = true;
-            // 
             // timePanel
             // 
             this.timePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -211,26 +199,14 @@
             this.timerPictureBox.TabIndex = 0;
             this.timerPictureBox.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(374, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 450);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.mineCountPanel);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.timePanel);
-            this.Controls.Add(this.TestLabel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -259,7 +235,6 @@
         private System.Windows.Forms.ToolStripMenuItem mediumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customToolStripMenuItem;
-        private System.Windows.Forms.Label TestLabel;
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.PictureBox timerPictureBox;
         private System.Windows.Forms.Label timeLabel;
@@ -269,7 +244,6 @@
         private System.Windows.Forms.PictureBox flagPictureBox;
         private System.Windows.Forms.ToolStripMenuItem scoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem highScoresToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
     }
 }
 

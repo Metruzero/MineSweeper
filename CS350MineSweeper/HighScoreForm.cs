@@ -41,7 +41,7 @@ namespace CS350MineSweeper
             for(int i = 0; i < easy.Count; i++)
             {
                 //Create row
-                string[] row = { i.ToString(), easy[i].name, easy[i].time.ToString() };
+                string[] row = { (i + 1).ToString(), easy[i].name, easy[i].time.ToString() };
 
                 easyDataGridView.Rows.Add(row);
             }
@@ -54,7 +54,7 @@ namespace CS350MineSweeper
             for (int i = 0; i < medium.Count; i++)
             {
                 //Create row
-                string[] row = { i.ToString(), medium[i].name, medium[i].time.ToString() };
+                string[] row = { (i + 1).ToString(), medium[i].name, medium[i].time.ToString() };
 
                 mediumDataGridView.Rows.Add(row);
             }
@@ -67,7 +67,7 @@ namespace CS350MineSweeper
             for (int i = 0; i < hard.Count; i++)
             {
                 //Create row
-                string[] row = { i.ToString(), hard[i].name, hard[i].time.ToString() };
+                string[] row = { (i + 1).ToString(), hard[i].name, hard[i].time.ToString() };
 
                 hardDataGridView.Rows.Add(row);
             }
@@ -84,7 +84,6 @@ namespace CS350MineSweeper
             easy = sc.GetScoreList(Difficulty.Easy);
             medium = sc.GetScoreList(Difficulty.Medium);
             hard = sc.GetScoreList(Difficulty.Hard);
-            label1.Text = hard.Count.ToString();
         }
     }
 }

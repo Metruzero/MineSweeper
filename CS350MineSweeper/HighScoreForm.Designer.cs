@@ -30,27 +30,26 @@
         {
             this.scoreTabControl = new System.Windows.Forms.TabControl();
             this.easyTab = new System.Windows.Forms.TabPage();
-            this.mediumTab = new System.Windows.Forms.TabPage();
-            this.hardTab = new System.Windows.Forms.TabPage();
             this.easyDataGridView = new System.Windows.Forms.DataGridView();
-            this.mediumDataGridView = new System.Windows.Forms.DataGridView();
-            this.hardDataGridView = new System.Windows.Forms.DataGridView();
             this.easyPlace = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.easyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.easyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mediumTab = new System.Windows.Forms.TabPage();
+            this.mediumDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hardTab = new System.Windows.Forms.TabPage();
+            this.hardDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.scoreTabControl.SuspendLayout();
             this.easyTab.SuspendLayout();
-            this.mediumTab.SuspendLayout();
-            this.hardTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.easyDataGridView)).BeginInit();
+            this.mediumTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mediumDataGridView)).BeginInit();
+            this.hardTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hardDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,27 +75,6 @@
             this.easyTab.Text = "Easy";
             this.easyTab.UseVisualStyleBackColor = true;
             // 
-            // mediumTab
-            // 
-            this.mediumTab.Controls.Add(this.mediumDataGridView);
-            this.mediumTab.Location = new System.Drawing.Point(4, 22);
-            this.mediumTab.Name = "mediumTab";
-            this.mediumTab.Padding = new System.Windows.Forms.Padding(3);
-            this.mediumTab.Size = new System.Drawing.Size(299, 200);
-            this.mediumTab.TabIndex = 1;
-            this.mediumTab.Text = "Medium";
-            this.mediumTab.UseVisualStyleBackColor = true;
-            // 
-            // hardTab
-            // 
-            this.hardTab.Controls.Add(this.hardDataGridView);
-            this.hardTab.Location = new System.Drawing.Point(4, 22);
-            this.hardTab.Name = "hardTab";
-            this.hardTab.Size = new System.Drawing.Size(299, 200);
-            this.hardTab.TabIndex = 2;
-            this.hardTab.Text = "Hard";
-            this.hardTab.UseVisualStyleBackColor = true;
-            // 
             // easyDataGridView
             // 
             this.easyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -109,32 +87,6 @@
             this.easyDataGridView.RowHeadersVisible = false;
             this.easyDataGridView.Size = new System.Drawing.Size(287, 188);
             this.easyDataGridView.TabIndex = 0;
-            // 
-            // mediumDataGridView
-            // 
-            this.mediumDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mediumDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.mediumDataGridView.Location = new System.Drawing.Point(6, 6);
-            this.mediumDataGridView.Name = "mediumDataGridView";
-            this.mediumDataGridView.RowHeadersVisible = false;
-            this.mediumDataGridView.Size = new System.Drawing.Size(287, 188);
-            this.mediumDataGridView.TabIndex = 1;
-            // 
-            // hardDataGridView
-            // 
-            this.hardDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.hardDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.hardDataGridView.Location = new System.Drawing.Point(6, 6);
-            this.hardDataGridView.Name = "hardDataGridView";
-            this.hardDataGridView.RowHeadersVisible = false;
-            this.hardDataGridView.Size = new System.Drawing.Size(287, 188);
-            this.hardDataGridView.TabIndex = 1;
             // 
             // easyPlace
             // 
@@ -154,6 +106,30 @@
             this.easyTime.Name = "easyTime";
             this.easyTime.Width = 70;
             // 
+            // mediumTab
+            // 
+            this.mediumTab.Controls.Add(this.mediumDataGridView);
+            this.mediumTab.Location = new System.Drawing.Point(4, 22);
+            this.mediumTab.Name = "mediumTab";
+            this.mediumTab.Padding = new System.Windows.Forms.Padding(3);
+            this.mediumTab.Size = new System.Drawing.Size(299, 200);
+            this.mediumTab.TabIndex = 1;
+            this.mediumTab.Text = "Medium";
+            this.mediumTab.UseVisualStyleBackColor = true;
+            // 
+            // mediumDataGridView
+            // 
+            this.mediumDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mediumDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.mediumDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.mediumDataGridView.Name = "mediumDataGridView";
+            this.mediumDataGridView.RowHeadersVisible = false;
+            this.mediumDataGridView.Size = new System.Drawing.Size(287, 188);
+            this.mediumDataGridView.TabIndex = 1;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Place";
@@ -171,6 +147,29 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Time";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // hardTab
+            // 
+            this.hardTab.Controls.Add(this.hardDataGridView);
+            this.hardTab.Location = new System.Drawing.Point(4, 22);
+            this.hardTab.Name = "hardTab";
+            this.hardTab.Size = new System.Drawing.Size(299, 200);
+            this.hardTab.TabIndex = 2;
+            this.hardTab.Text = "Hard";
+            this.hardTab.UseVisualStyleBackColor = true;
+            // 
+            // hardDataGridView
+            // 
+            this.hardDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.hardDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.hardDataGridView.Location = new System.Drawing.Point(6, 6);
+            this.hardDataGridView.Name = "hardDataGridView";
+            this.hardDataGridView.RowHeadersVisible = false;
+            this.hardDataGridView.Size = new System.Drawing.Size(287, 188);
+            this.hardDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -190,33 +189,22 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.Width = 70;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 289);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            // 
             // HighScoreForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 347);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(331, 240);
             this.Controls.Add(this.scoreTabControl);
             this.Name = "HighScoreForm";
             this.Text = "High Scores";
             this.scoreTabControl.ResumeLayout(false);
             this.easyTab.ResumeLayout(false);
-            this.mediumTab.ResumeLayout(false);
-            this.hardTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.easyDataGridView)).EndInit();
+            this.mediumTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mediumDataGridView)).EndInit();
+            this.hardTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hardDataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -238,6 +226,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.Label label1;
     }
 }
