@@ -1,0 +1,11 @@
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\bin\Debug\CS350MineSweeper.exe.config
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\bin\Debug\CS350MineSweeper.exe
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\bin\Debug\CS350MineSweeper.pdb
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.csprojAssemblyReference.cache
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.MainForm.resources
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.Properties.Resources.resources
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.csproj.GenerateResource.cache
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.csproj.CoreCompileInputs.cache
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.exe
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.pdb
+C:\Users\Zero\source\repos\CS350MineSweeper\CS350MineSweeper\obj\Debug\CS350MineSweeper.CustomDifficultyForm.resources
