@@ -36,7 +36,7 @@ namespace CS350MineSweeper
         {
 
             gameStateController = new GameStateController(this);
-            gameStateController.SetDifficulty(10, 10, 10);
+            gameStateController.SetDifficulty(10, 10, 10, Difficulty.Easy);
             gameStateController.ResetBoard(this);
             InitCustomFont();
             InitTimeControls();
@@ -203,19 +203,19 @@ namespace CS350MineSweeper
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gameStateController.SetDifficulty(10, 10, 10);
+            gameStateController.SetDifficulty(10, 10, 10, Difficulty.Easy);
             gameStateController.ResetBoard(this);
         }
 
         private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gameStateController.SetDifficulty(16, 16, 40);
+            gameStateController.SetDifficulty(16, 16, 40, Difficulty.Medium);
             gameStateController.ResetBoard(this);
         }
 
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gameStateController.SetDifficulty(30, 16, 99);
+            gameStateController.SetDifficulty(30, 16, 99, Difficulty.Hard);
             gameStateController.ResetBoard(this);
         }
 
@@ -229,7 +229,7 @@ namespace CS350MineSweeper
 
         public void SetDifficultyAndReset(int width, int height, int mineCount)
         {
-            gameStateController.SetDifficulty(width, height, mineCount);
+            gameStateController.SetDifficulty(width, height, mineCount, Difficulty.Custom);
             gameStateController.ResetBoard(this);
         }
 

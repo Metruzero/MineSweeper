@@ -8,6 +8,8 @@ using System.Drawing;
 
 namespace CS350MineSweeper
 {
+  
+
     class GridController
     {
         private Square[,] squares;

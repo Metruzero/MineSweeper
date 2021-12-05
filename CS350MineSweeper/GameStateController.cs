@@ -7,12 +7,20 @@ using System.Windows.Forms;
 
 namespace CS350MineSweeper
 {
-    enum GameState
+    public enum GameState
     {
         NewGame,
         Running,
         GameWon,
         GameLost
+    }
+
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard,
+        Custom
     }
 
     class GameStateController
@@ -24,6 +32,7 @@ namespace CS350MineSweeper
         public GameState gameState;
         private int width, height, mineCount;
         private MainForm mainForm;
+        private Difficulty diff;
 
         //Constructor
         public GameStateController(MainForm mainForm)
@@ -43,11 +52,12 @@ namespace CS350MineSweeper
         /// <param name="width">Width of the game board</param>
         /// <param name="height">Height of the game board</param>
         /// <param name="mineCount">Number of mines in the game</param>
-        public void SetDifficulty(int width, int height, int mineCount)
+        public void SetDifficulty(int width, int height, int mineCount, Difficulty diff)
         {
             this.width = width;
             this.height = height;
             this.mineCount = mineCount;
+            this.diff = diff;
         }
 
         /// <summary>
