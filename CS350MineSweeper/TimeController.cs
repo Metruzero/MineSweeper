@@ -39,23 +39,27 @@ namespace CS350MineSweeper
 
         public void startTime()
         {
+            //Start stop watch and enable timer
             stopwatch.Start();
             timer.Enabled = true;
         }
 
         public void resetTime()
         {
+            //Reset stop watch and update timer label
             stopwatch.Reset();
             mainForm.UpdateTimer(0);
         }
 
         public int getTime()
         {
+            //Return total seconds since start
             return (int)stopwatch.Elapsed.TotalSeconds;
         }
 
         private void timerTick(object sender, EventArgs e)
         {
+            //Update the timer in mainForm with the total number of seconds
             mainForm.UpdateTimer((int)stopwatch.Elapsed.TotalSeconds);
         }
 
