@@ -26,23 +26,23 @@ namespace CS350MineSweeper
     class GameStateController
     {
         //Attributes
-        public TimeController timeController;
-        public GridController gridController;
-        public MineCountController mineCountController;
+        private TimeController _timeController;
+        private GridController _gridController;
+        private MineCountController _mineCountController;
         public GameState gameState;
-        private int width, height, mineCount;
-        private MainForm mainForm;
-        private Difficulty diff;
+        private int _width, _height, _mineCount;
+        private MainForm _mainForm;
+        private Difficulty _diff;
 
         //Constructor
         public GameStateController(MainForm mainForm)
         {
             //Declare attributes
-            timeController = new TimeController(mainForm);
-            gridController = new GridController(this);
-            mineCountController = new MineCountController(mainForm);
+            _timeController = new TimeController(mainForm);
+            _gridController = new GridController(this);
+            _mineCountController = new MineCountController(mainForm);
             gameState = GameState.NewGame;
-            this.mainForm = mainForm;
+            this._mainForm = mainForm;
 
         }
 
@@ -54,10 +54,10 @@ namespace CS350MineSweeper
         /// <param name="mineCount">Number of mines in the game</param>
         public void SetDifficulty(int width, int height, int mineCount, Difficulty diff)
         {
-            this.width = width;
-            this.height = height;
-            this.mineCount = mineCount;
-            this.diff = diff;
+            this._width = width;
+            this._height = height;
+            this._mineCount = mineCount;
+            this._diff = diff;
         }
 
         /// <summary>
@@ -69,17 +69,17 @@ namespace CS350MineSweeper
 
             //Reset gameState
             gameState = GameState.NewGame;
-            gridController.ResetBoard();
+            _gridController.ResetBoard();
 
             //Create new button grid
-            Button[,] buttonsArr = ((MainForm)mainForm).CreateButtonArray(this.width, this.height);
-            gridController.RecieveButtonArr(buttonsArr, this.width, this.height);
+            Button[,] buttonsArr = ((MainForm)mainForm).CreateButtonArray(this._width, this._height);
+            _gridController.RecieveButtonArr(buttonsArr, this._width, this._height);
 
-            //TODO: Add Time reset code from controller
-            timeController.resetTime();
+            //Reset time for timer
+            _timeController.ResetTime();
 
             //Reset mine counter
-            mineCountController.resetCount(mineCount);
+            _mineCountController.ResetCount(_mineCount);
             
 
         }
@@ -92,15 +92,15 @@ namespace CS350MineSweeper
         public void StartGame(int xClick, int yClick)
         {
             //Generate board
-            gridController.GenerateBoard(this.mineCount, xClick, yClick);
+            _gridController.GenerateBoard(this._mineCount, xClick, yClick);
             gameState = GameState.Running;
             
 
-            //TODO: Time code and mine count code
-            timeController.startTime();
+            //Start timer
+            _timeController.StartTime();
 
-
-            gridController.RevealSquare(xClick, yClick);
+            //Reveal square in grid
+            _gridController.RevealSquare(xClick, yClick);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace CS350MineSweeper
             if(gameState == GameState.Running)
             {
                 //Toggle flag on square
-                gridController.ToggleFlag(x, y);
+                _gridController.ToggleFlag(x, y);
             }
         }
 
@@ -134,7 +134,7 @@ namespace CS350MineSweeper
             else if(gameState == GameState.Running)
             {
                 //gridController.RevealAll();
-                gridController.RevealSquare(x, y);
+                _gridController.RevealSquare(x, y);
             }
         }
 
@@ -144,8 +144,7 @@ namespace CS350MineSweeper
         public void GameLoss()
         {
             gameState = GameState.GameLost;
-            timeController.stopTime();
-            mainForm.GameLoss();
+            _timeController.StopTime();
         }
 
         /// <summary>
@@ -157,23 +156,23 @@ namespace CS350MineSweeper
             gameState = GameState.GameWon;
 
             //Stop timer
-            timeController.stopTime();
-            int score = timeController.getTime();
+            _timeController.StopTime();
+            int score = _timeController.GetTime();
 
             //Check score
             ScoreController sc = new ScoreController();
 
-            mainForm.GameWon(diff, score, sc.isHighScore(diff, score));
+            _mainForm.GameWon(_diff, score, sc.isHighScore(_diff, score));
         }
 
-        public void increaseMineCount()
+        public void IncreaseMineCount()
         {
-            mineCountController.increaseCount();
+            _mineCountController.IncreaseCount();
         }
 
-        public void decreaseMineCount()
+        public void DecreaseMineCount()
         {
-            mineCountController.decreaseCount();
+            _mineCountController.DecreaseCount();
         }
 
     }

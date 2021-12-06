@@ -24,8 +24,8 @@ namespace CS350MineSweeper
         private const int BottomPaddingForGrid = 100;
         private const int MinFormHeight = 300;
         private const int MinFormWidth = 300;
-        private GameStateController gameStateController;
-        private PrivateFontCollection pfc;
+        private GameStateController _gameStateController;
+        private PrivateFontCollection _pfc;
 
         public MainForm()
         {
@@ -35,9 +35,9 @@ namespace CS350MineSweeper
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-            gameStateController = new GameStateController(this);
-            gameStateController.SetDifficulty(10, 10, 10, Difficulty.Easy);
-            gameStateController.ResetBoard(this);
+            _gameStateController = new GameStateController(this);
+            _gameStateController.SetDifficulty(10, 10, 10, Difficulty.Easy);
+            _gameStateController.ResetBoard(this);
             InitCustomFont();
             InitTimeControls();
             InitResetButton();
@@ -48,7 +48,7 @@ namespace CS350MineSweeper
         {
             Size picBoxSize = new Size(timerPictureBox.Width, timerPictureBox.Height);
             timerPictureBox.Image = ImageWorker.RescaleImage(Properties.Resources.timer, picBoxSize);
-            timeLabel.Font = new Font(pfc.Families[0], timeLabel.Font.Size);
+            timeLabel.Font = new Font(_pfc.Families[0], timeLabel.Font.Size);
             timeLabel.ForeColor = Color.Red;
             timeLabel.Text = "0";
         }
@@ -64,7 +64,7 @@ namespace CS350MineSweeper
             Size picBoxSize = new Size(flagPictureBox.Width, flagPictureBox.Height);
             flagPictureBox.Image = ImageWorker.RescaleImage(Properties.Resources.flag_icon, picBoxSize);
             mineCountLabel.Parent = mineCountPanel;
-            mineCountLabel.Font = new Font(pfc.Families[0], mineCountLabel.Font.Size);
+            mineCountLabel.Font = new Font(_pfc.Families[0], mineCountLabel.Font.Size);
             mineCountLabel.ForeColor = Color.Red;
             
         }
@@ -74,7 +74,6 @@ namespace CS350MineSweeper
             //If buttons exist, destroy the buttons
             if(buttons != null)
             {
-                //SetTest("Buttons exist");
                 //Go through array and destroy all buttons
                 foreach(var b in buttons)
                 {
@@ -104,9 +103,6 @@ namespace CS350MineSweeper
                     //Set height and width of button
                     newButton.Width = ButtonWidth;
                     newButton.Height = ButtonHeight;
-
-                    //TO DO: Remove this
-                    //newButton.Text = x + "," + y;
 
                     //Add button to controls
                     Controls.Add(newButton);
@@ -181,19 +177,15 @@ namespace CS350MineSweeper
 
             if (e.Button == MouseButtons.Right)
             {
-                //TO DO: Toggle Flag
-                gameStateController.RightClickSquare(x, y);
+                //Right Click Call
+                _gameStateController.RightClickSquare(x, y);
                 
             }
             else if(e.Button == MouseButtons.Left)
             {
-                gameStateController.LeftClickSquare(x, y);
+                //Left Click Call
+                _gameStateController.LeftClickSquare(x, y);
             }
-        }
-
-        public void GameLoss()
-        {
-            //TestLabel.Text = "You lose!";
         }
 
         public void GameWon(Difficulty diff, int time, bool isHighScore)
@@ -214,20 +206,20 @@ namespace CS350MineSweeper
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gameStateController.SetDifficulty(10, 10, 10, Difficulty.Easy);
-            gameStateController.ResetBoard(this);
+            _gameStateController.SetDifficulty(10, 10, 10, Difficulty.Easy);
+            _gameStateController.ResetBoard(this);
         }
 
         private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gameStateController.SetDifficulty(16, 16, 40, Difficulty.Medium);
-            gameStateController.ResetBoard(this);
+            _gameStateController.SetDifficulty(16, 16, 40, Difficulty.Medium);
+            _gameStateController.ResetBoard(this);
         }
 
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gameStateController.SetDifficulty(30, 16, 99, Difficulty.Hard);
-            gameStateController.ResetBoard(this);
+            _gameStateController.SetDifficulty(30, 16, 99, Difficulty.Hard);
+            _gameStateController.ResetBoard(this);
         }
 
         private void customToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,14 +232,14 @@ namespace CS350MineSweeper
 
         public void SetDifficultyAndReset(int width, int height, int mineCount)
         {
-            gameStateController.SetDifficulty(width, height, mineCount, Difficulty.Custom);
-            gameStateController.ResetBoard(this);
+            _gameStateController.SetDifficulty(width, height, mineCount, Difficulty.Custom);
+            _gameStateController.ResetBoard(this);
         }
 
         private void InitCustomFont()
         {
             //Create private font collection
-            pfc = new PrivateFontCollection();
+            _pfc = new PrivateFontCollection();
 
             //pfc.AddFontFile(Properties.Resources.digital_7);
 
@@ -264,7 +256,7 @@ namespace CS350MineSweeper
             Marshal.Copy(fontData, 0, data, fontLength);
 
             //Add font to pfc
-            pfc.AddMemoryFont(data, fontLength);
+            _pfc.AddMemoryFont(data, fontLength);
 
             //Get rid of that block!
             Marshal.FreeCoTaskMem(data);
@@ -285,7 +277,7 @@ namespace CS350MineSweeper
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            gameStateController.ResetBoard(this);
+            _gameStateController.ResetBoard(this);
         }
 
         public void UpdateMineCount(int mineCount)
@@ -299,12 +291,5 @@ namespace CS350MineSweeper
             form.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ScoreController sc = new ScoreController();
-            sc.AddScore("Alan", Difficulty.Hard, 20);
-
-            List<Score> test = sc.GetScoreList(Difficulty.Hard);
-        }
     }
 }

@@ -12,55 +12,55 @@ namespace CS350MineSweeper
     class TimeController
     {
 
-        private Stopwatch stopwatch;
-        private System.Windows.Forms.Timer timer;
-        private MainForm mainForm;
+        private Stopwatch _stopwatch;
+        private System.Windows.Forms.Timer _timer;
+        private MainForm _mainForm;
 
         public TimeController(MainForm mainForm)
         {
-            this.mainForm = mainForm;
+            this._mainForm = mainForm;
             InitializeTimer();
 
         }
 
         private void InitializeTimer()
         {
-            stopwatch = new Stopwatch();
-            timer = new Timer();
-            timer.Enabled = false;
-            timer.Tick += new System.EventHandler(timerTick);
+            _stopwatch = new Stopwatch();
+            _timer = new Timer();
+            _timer.Enabled = false;
+            _timer.Tick += new System.EventHandler(TimerTick);
         }
 
-        public void stopTime()
+        public void StopTime()
         {
-            stopwatch.Stop();
-            timer.Enabled = false;
+            _stopwatch.Stop();
+            _timer.Enabled = false;
         }
 
-        public void startTime()
+        public void StartTime()
         {
             //Start stop watch and enable timer
-            stopwatch.Start();
-            timer.Enabled = true;
+            _stopwatch.Start();
+            _timer.Enabled = true;
         }
 
-        public void resetTime()
+        public void ResetTime()
         {
             //Reset stop watch and update timer label
-            stopwatch.Reset();
-            mainForm.UpdateTimer(0);
+            _stopwatch.Reset();
+            _mainForm.UpdateTimer(0);
         }
 
-        public int getTime()
+        public int GetTime()
         {
             //Return total seconds since start
-            return (int)stopwatch.Elapsed.TotalSeconds;
+            return (int)_stopwatch.Elapsed.TotalSeconds;
         }
 
-        private void timerTick(object sender, EventArgs e)
+        private void TimerTick(object sender, EventArgs e)
         {
             //Update the timer in mainForm with the total number of seconds
-            mainForm.UpdateTimer((int)stopwatch.Elapsed.TotalSeconds);
+            _mainForm.UpdateTimer((int)_stopwatch.Elapsed.TotalSeconds);
         }
 
 

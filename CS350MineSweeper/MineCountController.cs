@@ -9,46 +9,46 @@ namespace CS350MineSweeper
     class MineCountController
     {
         //Attributes
-        private MainForm mainForm;
-        private int maxMineCount;
-        private int mineCount;
+        private MainForm _mainForm;
+        private int _maxMineCount;
+        private int _mineCount;
 
         //Constructor
         public MineCountController(MainForm mainForm)
         {
-            this.mainForm = mainForm;
+            this._mainForm = mainForm;
 
         }
 
 
-        public void resetCount(int mc)
+        public void ResetCount(int mc)
         {
-            this.maxMineCount = mc;
-            this.mineCount = mc;
-            updateMainForm();
+            this._maxMineCount = mc;
+            this._mineCount = mc;
+            UpdateMainForm();
 
         }
 
-        public void decreaseCount()
+        public void DecreaseCount()
         {
-            mineCount--;
-            updateMainForm();
+            _mineCount--;
+            UpdateMainForm();
         }
 
-        public void increaseCount()
+        public void IncreaseCount()
         {
 
-            mineCount++;
-            if(mineCount > maxMineCount)
+            _mineCount++;
+            if(_mineCount > _maxMineCount)
             {
-                mineCount = maxMineCount;
+                _mineCount = _maxMineCount;
             }
-            updateMainForm();
+            UpdateMainForm();
         }
 
-        private void updateMainForm()
+        private void UpdateMainForm()
         {
-            mainForm.UpdateMineCount(mineCount);
+            _mainForm.UpdateMineCount(_mineCount);
         }
 
     }

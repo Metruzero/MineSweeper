@@ -8,9 +8,9 @@ namespace CS350MineSweeper
 {
     class Square
     {
-        public bool isMine;
-        public int adjacency;
-        public bool isFlagged;
-        public bool isRevealed;
+        public bool IsMine;
+        public int Adjacency;
+        public bool IsFlagged;
+        public bool IsRevealed;
     }
 }

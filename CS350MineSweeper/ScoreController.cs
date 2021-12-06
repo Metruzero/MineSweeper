@@ -9,6 +9,7 @@ namespace CS350MineSweeper
 {
     public class Score
     {
+        //Attributes
         public string name;
         public Difficulty diff;
         public int time;
@@ -24,31 +25,31 @@ namespace CS350MineSweeper
     class ScoreController
     {
 
-
-        private BinaryReader br;
-        private BinaryWriter bw;
-        private string fileName;
-        private List<Score> easy;
-        private List<Score> medium;
-        private List<Score> hard;
+        //Attributes
+        private BinaryReader _br;
+        private BinaryWriter _bw;
+        private string _fileName;
+        private List<Score> _easy;
+        private List<Score> _medium;
+        private List<Score> _hard;
         private const int MaxScores = 5;
 
         public ScoreController()
         {
             //File name
-            fileName = @"..\scores.bin";
+            _fileName = @"..\scores.bin";
 
             //Check if file exists
-            if (!File.Exists(fileName))
+            if (!File.Exists(_fileName))
             {
-                bw = new BinaryWriter(new FileStream(fileName, FileMode.Create));
-                bw.Close();
+                _bw = new BinaryWriter(new FileStream(_fileName, FileMode.Create));
+                _bw.Close();
             }
 
             //Declare lists
-            easy = new List<Score>();
-            medium = new List<Score>();
-            hard = new List<Score>();
+            _easy = new List<Score>();
+            _medium = new List<Score>();
+            _hard = new List<Score>();
 
 
         }
@@ -56,69 +57,69 @@ namespace CS350MineSweeper
         public void WriteScores()
         {
 
-            bw = new BinaryWriter(new FileStream(fileName, FileMode.Open));
+            _bw = new BinaryWriter(new FileStream(_fileName, FileMode.Open));
 
             //Write Easy
-            for (int i = 0; i < easy.Count; i++)
+            for (int i = 0; i < _easy.Count; i++)
             {
-                bw.Write(easy[i].name);
-                bw.Write((int)easy[i].diff);
-                bw.Write(easy[i].time);
+                _bw.Write(_easy[i].name);
+                _bw.Write((int)_easy[i].diff);
+                _bw.Write(_easy[i].time);
             }
 
             //Clear easy
-            easy.Clear();
+            _easy.Clear();
 
             //Write Medium
-            for (int i = 0; i < medium.Count; i++)
+            for (int i = 0; i < _medium.Count; i++)
             {
-                bw.Write(medium[i].name);
-                bw.Write((int)medium[i].diff);
-                bw.Write(medium[i].time);
+                _bw.Write(_medium[i].name);
+                _bw.Write((int)_medium[i].diff);
+                _bw.Write(_medium[i].time);
             }
 
             //Clear medium
-            medium.Clear();
+            _medium.Clear();
 
             //Write hard
-            for (int i = 0; i < hard.Count; i++)
+            for (int i = 0; i < _hard.Count; i++)
             {
-                bw.Write(hard[i].name);
-                bw.Write((int)hard[i].diff);
-                bw.Write(hard[i].time);
+                _bw.Write(_hard[i].name);
+                _bw.Write((int)_hard[i].diff);
+                _bw.Write(_hard[i].time);
             }
 
             //Clear medium
-            hard.Clear();
+            _hard.Clear();
 
-            bw.Close();
+            _bw.Close();
 
         }
 
         private void LoadScores()
         {
-            br = new BinaryReader(new FileStream(fileName, FileMode.Open));
+            _br = new BinaryReader(new FileStream(_fileName, FileMode.Open));
 
             while (true)
             {
                 try
                 {
-                    string s = br.ReadString();
-                    int diff = br.ReadInt32();
-                    int score = br.ReadInt32();
+                    string s = _br.ReadString();
+                    int diff = _br.ReadInt32();
+                    int score = _br.ReadInt32();
 
                     Score tempScore = new Score(s, (Difficulty)diff, score);
 
                     switch (tempScore.diff)
                     {
                         case Difficulty.Easy:
-                            easy.Add(tempScore);
+                            _easy.Add(tempScore);
                             break;
                         case Difficulty.Medium:
-                            medium.Add(tempScore);
+                            _medium.Add(tempScore);
                             break;
                         case Difficulty.Hard:
-                            hard.Add(tempScore);
+                            _hard.Add(tempScore);
                             break;
                     }
                 }
@@ -128,7 +129,7 @@ namespace CS350MineSweeper
                 }
             }
 
-            br.Close();
+            _br.Close();
         }
 
         public void AddScore(string name, Difficulty diff, int score)
@@ -141,53 +142,46 @@ namespace CS350MineSweeper
             switch (tempScore.diff)
             {
                 case Difficulty.Easy:
-                    easy.Add(tempScore);
+                    _easy.Add(tempScore);
                     break;
                 case Difficulty.Medium:
-                    medium.Add(tempScore);
+                    _medium.Add(tempScore);
                     break;
                 case Difficulty.Hard:
-                    hard.Add(tempScore);
+                    _hard.Add(tempScore);
                     break;
             }
 
-            //
-            //
+
             //                      Easy Score Code
-            //
             //Sort list by time
-            easy = easy.OrderBy(s => s.time).ToList<Score>();
+            _easy = _easy.OrderBy(s => s.time).ToList<Score>();
 
             //Check is list needs trimming
-            if (easy.Count > MaxScores)
+            if (_easy.Count > MaxScores)
             {
-                trimScores(easy);
+                trimScores(_easy);
             }
 
-            //
-            //
+
             //                      Medium Score Code
-            //
             //Sort list by time
-            medium = medium.OrderBy(s => s.time).ToList<Score>();
+            _medium = _medium.OrderBy(s => s.time).ToList<Score>();
 
             //Check is list needs trimming
-            if (medium.Count > MaxScores)
+            if (_medium.Count > MaxScores)
             {
-                trimScores(medium);
+                trimScores(_medium);
             }
 
-            //
-            //
             //                      Hard Score Code
-            //
             //Sort list by time
-            hard = hard.OrderBy(s => s.time).ToList<Score>();
+            _hard = _hard.OrderBy(s => s.time).ToList<Score>();
 
             //Check is list needs trimming
-            if (hard.Count > MaxScores)
+            if (_hard.Count > MaxScores)
             {
-                trimScores(hard);
+                trimScores(_hard);
             }
 
 
@@ -219,14 +213,14 @@ namespace CS350MineSweeper
                 //Easy case
                 case Difficulty.Easy:
                     //If the easy list has less than 5 scores, then it has room for more high scores
-                    if (easy.Count < MaxScores)
+                    if (_easy.Count < MaxScores)
                     {
                         highScore = true;
                     }
                     else
                     {
                         //If the score is less than the highest value, then it is a new high score
-                        if (easy[4].time > time)
+                        if (_easy[4].time > time)
                         {
                             highScore = true;
                         }
@@ -239,14 +233,14 @@ namespace CS350MineSweeper
                 //Medium Case
                 case Difficulty.Medium:
                     //If the easy list has less than 5 scores, then it has room for more high scores
-                    if (medium.Count < MaxScores)
+                    if (_medium.Count < MaxScores)
                     {
                         highScore = true;
                     }
                     else
                     {
                         //If the score is less than the highest value, then it is a new high score
-                        if (medium[4].time > time)
+                        if (_medium[4].time > time)
                         {
                             highScore = true;
                         }
@@ -259,14 +253,14 @@ namespace CS350MineSweeper
                 //Hard Case
                 case Difficulty.Hard:
                     //If the easy list has less than 5 scores, then it has room for more high scores
-                    if (hard.Count < MaxScores)
+                    if (_hard.Count < MaxScores)
                     {
                         highScore = true;
                     }
                     else
                     {
                         //If the score is less than the highest value, then it is a new high score
-                        if (hard[4].time > time)
+                        if (_hard[4].time > time)
                         {
                             highScore = true;
                         }
@@ -279,9 +273,9 @@ namespace CS350MineSweeper
             }//End of switch
 
             //Clear lists
-            easy.Clear();
-            medium.Clear();
-            hard.Clear();
+            _easy.Clear();
+            _medium.Clear();
+            _hard.Clear();
 
             return highScore;
         }
@@ -296,20 +290,20 @@ namespace CS350MineSweeper
             switch (diff)
             {
                 case Difficulty.Easy:
-                    retScoreList = new List<Score>(easy);
+                    retScoreList = new List<Score>(_easy);
                     break;
                 case Difficulty.Medium:
-                    retScoreList = new List<Score>(medium);
+                    retScoreList = new List<Score>(_medium);
                     break;
                 case Difficulty.Hard:
-                    retScoreList = new List<Score>(hard);
+                    retScoreList = new List<Score>(_hard);
                     break;
             }
 
             //Clear lists
-            easy.Clear();
-            medium.Clear();
-            hard.Clear();
+            _easy.Clear();
+            _medium.Clear();
+            _hard.Clear();
 
             return retScoreList;
 

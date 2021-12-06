@@ -13,8 +13,8 @@ namespace CS350MineSweeper
     public partial class HighScoreForm : Form
     {
         //Score lists
-        private List<Score> easy, medium, hard;
-        private ScoreController sc;
+        private List<Score> _easy, _medium, _hard;
+        private ScoreController _sc;
 
 
         public HighScoreForm()
@@ -38,10 +38,10 @@ namespace CS350MineSweeper
             //               Easy Score Loop
             //
             // Iterate through easy list and add data to grid view
-            for(int i = 0; i < easy.Count; i++)
+            for(int i = 0; i < _easy.Count; i++)
             {
                 //Create row
-                string[] row = { (i + 1).ToString(), easy[i].name, easy[i].time.ToString() };
+                string[] row = { (i + 1).ToString(), _easy[i].name, _easy[i].time.ToString() };
 
                 easyDataGridView.Rows.Add(row);
             }
@@ -51,10 +51,10 @@ namespace CS350MineSweeper
             //               Medium Score Loop
             //
             // Iterate through medium list and add data to grid view
-            for (int i = 0; i < medium.Count; i++)
+            for (int i = 0; i < _medium.Count; i++)
             {
                 //Create row
-                string[] row = { (i + 1).ToString(), medium[i].name, medium[i].time.ToString() };
+                string[] row = { (i + 1).ToString(), _medium[i].name, _medium[i].time.ToString() };
 
                 mediumDataGridView.Rows.Add(row);
             }
@@ -64,10 +64,10 @@ namespace CS350MineSweeper
             //               Hard Score Loop
             //
             // Iterate through hard list and add data to grid view
-            for (int i = 0; i < hard.Count; i++)
+            for (int i = 0; i < _hard.Count; i++)
             {
                 //Create row
-                string[] row = { (i + 1).ToString(), hard[i].name, hard[i].time.ToString() };
+                string[] row = { (i + 1).ToString(), _hard[i].name, _hard[i].time.ToString() };
 
                 hardDataGridView.Rows.Add(row);
             }
@@ -78,12 +78,12 @@ namespace CS350MineSweeper
         private void GetScoreLists()
         {
             //Create Score Controller
-            sc = new ScoreController();
+            _sc = new ScoreController();
 
             //Get lists
-            easy = sc.GetScoreList(Difficulty.Easy);
-            medium = sc.GetScoreList(Difficulty.Medium);
-            hard = sc.GetScoreList(Difficulty.Hard);
+            _easy = _sc.GetScoreList(Difficulty.Easy);
+            _medium = _sc.GetScoreList(Difficulty.Medium);
+            _hard = _sc.GetScoreList(Difficulty.Hard);
         }
     }
 }

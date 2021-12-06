@@ -12,18 +12,18 @@ namespace CS350MineSweeper
 
     class GridController
     {
-        private Square[,] squares;
-        private Button[,] buttons;
-        private GameStateController gameStateController;
-        private int width;
-        private int height;
-        private int unrevealedNonMines;
+        private Square[,] _squares;
+        private Button[,] _buttons;
+        private GameStateController _gameStateController;
+        private int _width;
+        private int _height;
+        private int _unrevealedNonMines;
 
 
 
         public GridController(GameStateController gsc)
         {
-            gameStateController = gsc;
+            _gameStateController = gsc;
         }
 
         /// <summary>
@@ -34,24 +34,24 @@ namespace CS350MineSweeper
         public void ToggleFlag(int x, int y)
         {
             //Check if square is revealed. If it's not revealed, toggle it
-            if(!squares[x,y].isRevealed)
+            if(!_squares[x,y].IsRevealed)
             {
                 //Toggle isFlagged bool on square
-                squares[x, y].isFlagged = !squares[x, y].isFlagged;
+                _squares[x, y].IsFlagged = !_squares[x, y].IsFlagged;
 
-                if(squares[x, y].isFlagged)
+                if(_squares[x, y].IsFlagged)
                 {
                     //buttons[x, y].BackColor = Color.Red;
                     //buttons[x, y].Image = Properties.Resources.flag_icon;
-                    Size newSize = new Size(buttons[0, 0].Width, buttons[0, 0].Height);
-                    buttons[x, y].Image = ImageWorker.RescaleImage(Properties.Resources.flag_icon, newSize);
-                    gameStateController.decreaseMineCount();
+                    Size newSize = new Size(_buttons[0, 0].Width, _buttons[0, 0].Height);
+                    _buttons[x, y].Image = ImageWorker.RescaleImage(Properties.Resources.flag_icon, newSize);
+                    _gameStateController.DecreaseMineCount();
                 }
                 else
                 {
                     //buttons[x, y].BackColor = SystemColors.Control;
-                    buttons[x, y].Image = null;
-                    gameStateController.increaseMineCount();
+                    _buttons[x, y].Image = null;
+                    _gameStateController.IncreaseMineCount();
                 }
 
             }
@@ -63,15 +63,15 @@ namespace CS350MineSweeper
         private void CreateSquaresArr()
         {
             //Init squares
-            squares = new Square[width, height];
+            _squares = new Square[_width, _height];
 
             //Set all square to new square with next loop
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < _height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < _width; x++)
                 {
                     //Declare square
-                    squares[x, y] = new Square();
+                    _squares[x, y] = new Square();
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace CS350MineSweeper
         {
             PlaceMines(mineCount, xClick, yClick);
             GenerateAdjacenciesLoop();
-            unrevealedNonMines = width * height - mineCount;
+            _unrevealedNonMines = _width * _height - mineCount;
         }
 
         /// <summary>
@@ -95,9 +95,9 @@ namespace CS350MineSweeper
         private void GenerateAdjacenciesLoop()
         {
             //Set all square to new square with next loop
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < _height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < _width; x++)
                 {
                     FindAdjacency(x, y);
                 }
@@ -118,15 +118,15 @@ namespace CS350MineSweeper
             for(int x = xPos - 1; x <= xPos + 1; x++)
             {
                 //Check if x is in a valie position
-                if(x >= 0 && x < width)
+                if(x >= 0 && x < _width)
                 {
                     for (int y = yPos - 1; y <= yPos + 1; y++)
                     {
                         //Check if y is on the board
-                        if(y >= 0 && y < height)
+                        if(y >= 0 && y < _height)
                         {
                             //Check if spot on that sqaure is a mine
-                            if(squares[x, y].isMine)
+                            if(_squares[x, y].IsMine)
                             {
                                 neighborMines++;
                             }
@@ -138,7 +138,7 @@ namespace CS350MineSweeper
             }
 
             //Set adjacency
-            squares[xPos, yPos].adjacency = neighborMines;
+            _squares[xPos, yPos].Adjacency = neighborMines;
         }
 
         /// <summary>
@@ -160,11 +160,11 @@ namespace CS350MineSweeper
                 int ranX, ranY;
 
                 //Generate random positions
-                ranX = ran.Next(width);
-                ranY = ran.Next(height);
+                ranX = ran.Next(_width);
+                ranY = ran.Next(_height);
 
                 //Check if position already has a mine
-                if (squares[ranX, ranY].isMine)
+                if (_squares[ranX, ranY].IsMine)
                 {
                     continue;
                 }
@@ -178,7 +178,7 @@ namespace CS350MineSweeper
                     else
                     {
                         //Place mine in square and increment i
-                        squares[ranX, ranY].isMine = true;
+                        _squares[ranX, ranY].IsMine = true;
                         i++; //Indicates we placed another mine
                     }
 
@@ -195,11 +195,11 @@ namespace CS350MineSweeper
         public void RecieveButtonArr(Button[,] buttonsArr, int width, int height)
         {
             //Set buttons array
-            buttons = buttonsArr;
+            _buttons = buttonsArr;
 
             //Set width and height
-            this.width = width;
-            this.height = height;
+            this._width = width;
+            this._height = height;
 
             //Create new squares array
             CreateSquaresArr();
@@ -215,8 +215,8 @@ namespace CS350MineSweeper
         /// </summary>
         public void ResetBoard()
         {
-            buttons = null;
-            squares = null;
+            _buttons = null;
+            _squares = null;
         }
 
         /// <summary>
@@ -225,14 +225,14 @@ namespace CS350MineSweeper
         public void RevealAllLoss()
         {
             //Loop through all squares and buttons to reveal
-            for(int x = 0; x < width; x++)
+            for(int x = 0; x < _width; x++)
             {
-                for(int y= 0; y < height; y++)
+                for(int y= 0; y < _height; y++)
                 {
-                    if(squares[x,y].isMine)
+                    if(_squares[x,y].IsMine)
                     {
-                        Size newSize = new Size(buttons[0, 0].Width, buttons[0, 0].Height);
-                        buttons[x, y].Image = ImageWorker.RescaleImage(Properties.Resources.mine, newSize);
+                        Size newSize = new Size(_buttons[0, 0].Width, _buttons[0, 0].Height);
+                        _buttons[x, y].Image = ImageWorker.RescaleImage(Properties.Resources.mine, newSize);
                         //buttons[x, y].BackColor = Color.Green;
                         //buttons[x, y].Enabled = false;
                     }
@@ -247,14 +247,14 @@ namespace CS350MineSweeper
         public void RevealAllWin()
         {
             //Loop through all squares and buttons to reveal
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < _width; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < _height; y++)
                 {
-                    if (squares[x, y].isMine)
+                    if (_squares[x, y].IsMine)
                     {
-                        Size newSize = new Size(buttons[0, 0].Width, buttons[0, 0].Height);
-                        buttons[x, y].Image = ImageWorker.RescaleImage(Properties.Resources.flower, newSize);
+                        Size newSize = new Size(_buttons[0, 0].Width, _buttons[0, 0].Height);
+                        _buttons[x, y].Image = ImageWorker.RescaleImage(Properties.Resources.flower, newSize);
                         //buttons[x, y].Enabled = false;
                     }
                     else
@@ -273,41 +273,23 @@ namespace CS350MineSweeper
         public void RevealSquare(int xClick, int yClick)
         {
             //If the square is flagged, do not reveal
-            if(squares[xClick, yClick].isFlagged)
+            if(_squares[xClick, yClick].IsFlagged)
             {
                 return;
             }
 
             //Check if the square is a mine
-            if(squares[xClick, yClick].isMine)
+            if(_squares[xClick, yClick].IsMine)
             {
-                gameStateController.GameLoss();
+                _gameStateController.GameLoss();
                 RevealAllLoss();
 
             }
             //Then square has adjacency value
             else
             {
-
                 //Reveal adjacency value
                 RevealAdjacency(xClick, yClick);
-
-                /*
-                //If the square has an adjacency, no need for recursive call
-                if (squares[xClick, yClick].adjacency > 0 && !squares[xClick, yClick].isRevealed)
-                {
-                    RevealAdjacency(xClick, yClick);
-                }
-                //Now adjacency is zero, in which we reveal all nearby squares
-                else if(squares[xClick, yClick].adjacency == 0)
-                {
-                    
-                    buttons[xClick, yClick].Text = "";
-                    buttons[xClick, yClick].BackColor = Color.Gray;
-                    buttons[xClick, yClick].Enabled = true;
-                    RevealSquaresNearEmpty(xClick, yClick);
-                }
-                */
             }
         }
 
@@ -319,32 +301,31 @@ namespace CS350MineSweeper
         private void RevealAdjacency(int x, int y)
         {
             //Check if square is revealed or flagged
-            if (squares[x, y].isRevealed || (squares[x, y].isFlagged && gameStateController.gameState == GameState.Running))
+            if (_squares[x, y].IsRevealed || (_squares[x, y].IsFlagged &&
+                _gameStateController.gameState == GameState.Running))
             {
                 return;
             }
 
             //Declare vars
-            Button button = buttons[x, y];
-            Square square = squares[x, y];
+            Button button = _buttons[x, y];
+            Square square = _squares[x, y];
 
             //Change button settings
             button.BackColor = Color.Gray;
             button.Font = new Font(button.Font, FontStyle.Bold);
-            button.ForeColor = ReceiveAdjacencyColor(square.adjacency);
-            unrevealedNonMines--;
-            square.isRevealed = true;
-
-
+            button.ForeColor = ReceiveAdjacencyColor(square.Adjacency);
+            _unrevealedNonMines--;
+            square.IsRevealed = true;
 
             //If the square has an adjacency, no need for recursive call
-            if (square.adjacency > 0)
+            if (square.Adjacency > 0)
             {
-                button.Text = square.adjacency.ToString();
+                button.Text = square.Adjacency.ToString();
             }
 
             //Now adjacency is zero, in which we reveal all nearby squares
-            else if (square.adjacency == 0)
+            else if (square.Adjacency == 0)
             {
 
                 button.Text = "";
@@ -352,9 +333,9 @@ namespace CS350MineSweeper
             }
 
             //Check for win condition
-            if (unrevealedNonMines <= 0 && gameStateController.gameState == GameState.Running)
+            if (_unrevealedNonMines <= 0 && _gameStateController.gameState == GameState.Running)
             {
-                gameStateController.GameWon();
+                _gameStateController.GameWon();
                 RevealAllWin();
             }
         }
@@ -370,15 +351,14 @@ namespace CS350MineSweeper
             for (int x = xPos - 1; x <= xPos + 1; x++)
             {
                 //Check if x is in a valid position
-                if (x >= 0 && x < width)
+                if (x >= 0 && x < _width)
                 {
                     for (int y = yPos - 1; y <= yPos + 1; y++)
                     {
                         //Check if y is on the board
-                        if (y >= 0 && y < height)
+                        if (y >= 0 && y < _height)
                         {
                             RevealAdjacency(x, y);
-                            //RevealSquare(x, y);
 
                         }
                     }

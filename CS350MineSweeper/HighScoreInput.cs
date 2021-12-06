@@ -12,14 +12,14 @@ namespace CS350MineSweeper
 {
     public partial class HighScoreInput : Form
     {
-        private Difficulty diff;
-        private int time;
+        private Difficulty _diff;
+        private int _time;
 
         public HighScoreInput(Difficulty diff, int time)
         {
             InitializeComponent();
-            this.diff = diff;
-            this.time = time;
+            this._diff = diff;
+            this._time = time;
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace CS350MineSweeper
 
             //Create Score controller and add score
             ScoreController sc = new ScoreController();
-            sc.AddScore(s, diff, time);
+            sc.AddScore(s, _diff, _time);
 
             //Close form
             this.Close();
