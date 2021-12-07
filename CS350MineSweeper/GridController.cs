@@ -192,7 +192,7 @@ namespace CS350MineSweeper
         /// <param name="buttonsArr">Button arr reference</param>
         /// <param name="width">Width of grid</param>
         /// <param name="height">Height of grid</param>
-        public void RecieveButtonArr(Button[,] buttonsArr, int width, int height)
+        public void ReceiveButtonArr(Button[,] buttonsArr, int width, int height)
         {
             //Set buttons array
             _buttons = buttonsArr;

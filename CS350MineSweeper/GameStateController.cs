@@ -73,7 +73,7 @@ namespace CS350MineSweeper
 
             //Create new button grid
             Button[,] buttonsArr = ((MainForm)mainForm).CreateButtonArray(this._width, this._height);
-            _gridController.RecieveButtonArr(buttonsArr, this._width, this._height);
+            _gridController.ReceiveButtonArr(buttonsArr, this._width, this._height);
 
             //Reset time for timer
             _timeController.ResetTime();
